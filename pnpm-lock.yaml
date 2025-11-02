@@ -68,6 +68,9 @@ importers:
       gemoji:
         specifier: ^8.1.0
         version: 8.1.0
+      github-slugger:
+        specifier: ^2.0.0
+        version: 2.0.0
       hast-util-from-html-isomorphic:
         specifier: ^2.0.0
         version: 2.0.0
@@ -83,6 +86,12 @@ importers:
       mdast-util-directive:
         specifier: ^3.1.0
         version: 3.1.0
+      mdast-util-find-and-replace:
+        specifier: ^3.0.2
+        version: 3.0.2
+      mdast-util-to-markdown:
+        specifier: ^2.1.2
+        version: 2.1.2
       mdast-util-to-string:
         specifier: ^4.0.0
         version: 4.0.0
