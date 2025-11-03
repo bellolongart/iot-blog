@@ -30,10 +30,10 @@ const config: SiteConfig = {
       name: 'Inicio',
       url: '/',
     },
-    {
-      name: 'Acerca de',
-      url: '/about',
-    },
+    // {
+    //   name: 'Acerca de',
+    //   url: '/about',
+    // },
     {
       name: 'Archive',
       url: '/posts',
