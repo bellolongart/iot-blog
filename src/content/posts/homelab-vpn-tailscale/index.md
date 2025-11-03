@@ -28,7 +28,7 @@ Documentación Oficial: [Install Tailscale](https://tailscale.com/kb/1347/instal
 Este tutorial de instalación es solo para Linux(Debian Base). En Windows... bueno, averiguatelas. Puedes seguir los pasos de la documentación oficial de Tailscale.
 ::::
 
-1. Añadimo los repositorios:
+1. Añadimos los repositorios:
 
 ```bash
 curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/oracular.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
@@ -92,7 +92,7 @@ Por último, deshabilitamos la expiración para el servidor, ya que, por defecto
 
 ![Aprobar dispositivo](assets/config-disable-expiration.png)
 
-¡Listo! Ya tenemos nuestro VPN configurado. Ahora vamos a conectar otro dispositivo en la red VPN para verificar la correcta comunicación.
+¡Listo! Ya tenemos nuestro VPN configurado. Ahora vamos a conectar otro dispositivo en la red para verificar la correcta comunicación.
 
 ::::tip
 Échale un ojo a la [documentacion oficial de Tailscale](https://tailscale.com/kb/1415/quick-guides) para que explores otras configuraciones interesantes.
@@ -106,29 +106,29 @@ La configuración en Android e IOS es sencilla, solo debes descargar la app desd
 
 #### Linux
 
-Para Debian, o cualquier distribución basada en ella, y también para Manjaro o Arch, los pasos son los mismos que los del servidor en casa, con unos pasos diferentes en la configuración:
+Para Debian, o cualquier distribución basada en ella, y también para Manjaro o Arch, los pasos son los mismos que los vistos anteriormente, con unas pequeñas diferencias en cuanto a la configuración:
 
-1. Agregar los paquetes:
+1. Agregamos los paquetes:
 
 ```bash
 curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/oracular.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
 curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/oracular.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list
 ```
 
-2. Instalar Tailscale
+2. Instalamos Tailscale
 
 ```bash
 sudo apt-get update
 sudo apt-get install tailscale
 ```
 
-3. Conectarse a la VPN
+3. Nos conectamos a la VPN
 
 ```bash
 tailscale up
 ```
 
-Nuevamente, ingresamos en el enlace e iniciamos sesión con nuestra cuenta de Tailscale
+Nuevamente, ingresamos en el enlace e iniciamos sesión con nuestra cuenta de Tailscale.
 
 4. Configuración
 
@@ -144,12 +144,39 @@ La estructura de mi red VPN es la siguiente:
 
 ![Aprobar dispositivo](assets/vpn-structure.png)
 
+Noten que Tailscale actua como nodo de distribución de toda nuestra red VPN.
+
 **Dispositivos:**
 - HomeLab: Servidor de casa
-- Teléfono móvil: Mi teléfono móvil(obviamente)
-- PC Personal: Laptop.
+- IoT Devices: Dispositivos de monitoreo y automatización.
 - VPS: Servidor virtual en Contabo.
+- External devices: Laptop, Teléfono o cualquier otro dispositivo conectado a la red VPN fuera de la red local de casa.
 
-### Prueba 1: comunicación del VPS con mi servidor local
+### Prueba #1: Comunicación del VPS con mi servidor local
 
 ![Aprobar dispositivo](assets/test-con-vps2home.png)
+
+### Prueba #2: Comunicación del VPS con mi router(puerta de enlace local)
+
+![Aprobar dispositivo](assets/test-con-vps2router.png)
+
+### Prueba #3: Accediendo al panel de administración de mi router local desde el exterior
+
+![Aprobar dispositivo](assets/access2router.png)
+
+Observen que estoy utilizando datos móviles y accediendo ip local de mi router.
+
+
+## Extra
+
+Si tenemos un VPS conectado a nuestra VPN, también lo podemos configurar como Exit node, y de está manera, podría actuar como nodo de salida para  nuestros dispositivos en la red VPN, es decir, nuestras solicitudes hacia Internet saldrían desde la IP de nuestro VPS, lo que ayuda a evitar bloqueos de páginas web y servicios que están restringidos para tu ubicación.
+
+## Conclusiones
+
+Tailscale es una VPN demásiado fácil de instalar y configurar. Creo que no tomaría ni 30 minutos tenerla totalmente lista y funcional. No solo nos brinda acceso a nuestro servidor o recursos en casa, también nos provee de una capa extra de seguridad al no tener que exponer puertos de nuestro router.
+
+Una de las cosas que más me llamó la atención es su panel de administración, ya que tiene muchas herramientas para la gestión de nuestros dispositivos conectados a la VPN, y además su UX es simplemente hermosa.
+
+Aún nos falta configurar los DNS locales, para así poder acceder a nuestros servicios mediante una URL, pero eso lo dejaremos para otro post.
+
+Espero que este pequeño tutorial te haya servido.
