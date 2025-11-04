@@ -1,7 +1,7 @@
 ---
 title: 'Internet de las Cosas (IoT)'
 published: '2025-10-05'
-draft: false
+draft: true
 description: 'Aprende los conceptos básicos del Internet de las Cosas (IoT) y cómo implementarlos en proyectos de desarrollo.'
 tags: ['iot']
 series: 'IoT y Monitorieo'
