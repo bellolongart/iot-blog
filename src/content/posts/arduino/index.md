@@ -1,7 +1,7 @@
 ---
 title: 'Arduino y ESP32'
 published: '2025-10-13'
-draft: false
+draft: true
 description: 'Fundamentos básicos de los microcontroladores'
 tags: ['arduino', 'esp32', 'microcontroladores']
 series: 'IoT y Monitorieo'
